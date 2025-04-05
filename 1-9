@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задания на JavaScript</title>
+    <script>
+        // Задание 1: Проверка возраста
+        function isOlderThan18(num) {
+            return num > 18;
+        }
+
+        // Задание 2: Проверка четности
+        function isEven(num) {
+            return num % 2 === 0;
+        }
+
+        // Задание 3: Переворот строки
+        function reverseString(str) {
+            return str.split('').reverse().join('');
+        }
+
+        // Задание 4: Проверка палиндрома
+        function isPalindrome(str) {
+            const cleanedStr = str.replace(/[^а-яА-ЯёЁa-zA-Z]/g, '').toLowerCase();
+            return cleanedStr === cleanedStr.split('').reverse().join('');
+        }
+
+        // Задание 5: Сумма первой и последней цифры
+        function sumFirstAndLastDigit(num) {
+            const numStr = num.toString();
+            const firstDigit = parseInt(numStr.charAt(0), 10);
+            const lastDigit = parseInt(numStr.charAt(numStr.length - 1), 10);
+            return firstDigit + lastDigit;
+        }
+
+        // Задание 6: Сумма элементов массива
+        function sumPositiveLessThanTen(arr) {
+            return arr.reduce((sum, num) => (num > 0 && num < 10 ? sum + num : sum), 0);
+        }
+
+        // Задание 7: Уникальные числа в массиве
+        function uniqueNumbers(arr) {
+            return [...new Set(arr)];
+        }
+
+        // Задание 8: Подсчет гласных
+        function countVowels(str) {
+            const vowels = ['а', 'я', 'о', 'ё', 'у', 'ю', 'ы', 'и', 'э', 'е'];
+            return Array.from(str).filter(char => vowels.includes(char)).length;
+        }
+
+        // Задание 9: Сортировка массива
+        function bubbleSort(arr) {
+            const sortedArr = [...arr];
+            for (let i = 0; i < sortedArr.length - 1; i++) {
+                for (let j = 0; j < sortedArr.length - 1 - i; j++) {
+                    if (sortedArr[j] > sortedArr[j + 1]) {
+                        [sortedArr[j], sortedArr[j + 1]] = [sortedArr[j + 1], sortedArr[j]];
+                    }
+                }
+            }
+            return sortedArr;
+        }
+
+        // Функция для отображения результатов
+        function displayResults() {
+            const ageInput = parseInt(document.getElementById("ageInput").value, 10);
+            const evenInput = parseInt(document.getElementById("evenInput").value, 10);
+            const reverseInput = document.getElementById("reverseInput").value;
+            const palindromeInput = document.getElementById("palindromeInput").value;
+            const sumDigitsInput = parseInt(document.getElementById("sumDigitsInput").value, 10);
+            const arrayInput = document.getElementById("arrayInput").value.split(',').map(Number);
+            const uniqueArrayInput = arrayInput.slice(); // Копируем массив для уникальных чисел
+            const vowelInput = document.getElementById("vowelInput").value;
+
+            document.getElementById("ageResult").innerText = isOlderThan18(ageInput);
+            document.getElementById("evenResult").innerText = isEven(evenInput);
+            document.getElementById("reverseResult").innerText = reverseString(reverseInput);
+            document.getElementById("palindromeResult").innerText = isPalindrome(palindromeInput);
+            document.getElementById("sumDigitsResult").innerText = sumFirstAndLastDigit(sumDigitsInput);
+            document.getElementById("sumArrayResult").innerText = sumPositiveLessThanTen(arrayInput);
+            document.getElementById("uniqueArrayResult").innerText = uniqueNumbers(uniqueArrayInput).join(', ');
+            document.getElementById("vowelCountResult").innerText = countVowels(vowelInput);
+            document.getElementById("sortedArrayResult").innerText = bubbleSort(arrayInput).join(', ');
+        }
+    </script>
+</head>
+<body>
+    <h1>Задания на JavaScript</h1>
+    <h2>Задание 1: Проверка возраста</h2>
+    <label for="ageInput">Введите число:</label>
+    <input type="number" id="ageInput" />
+    <p>Результат: <span id="ageResult"></span></p>
+
+    <h2>Задание 2: Проверка четности</h2>
+    <label for="evenInput">Введите число:</label>
+    <input type="number" id="evenInput" />
+    <p>Результат: <span id="evenResult"></span></p>
+
+    <h2>Задание 3: Переворот строки</h2>
+    <label for="reverseInput">Введите строку:</label>
+    <input type="text" id="reverseInput" />
+    <p>Результат: <span id="reverseResult"></span></p>
+
+    <h2>Задание 4: Проверка палиндрома</h2>
+    <label for="palindromeInput">Введите строку:</label>
+    <input type="text" id="palindromeInput" />
+    <p>Результат: <span id="palindromeResult"></span></p>
+
+    <h2>Задание 5: Сумма первой и последней цифры</h2>
+    <label for="sumDigitsInput">Введите число:</label>
+    <input type="number" id="sumDigitsInput" />
+    <p>Результат: <span id="sumDigitsResult"></span></p>
+
+    <h2>Задание 6: Сумма элементов массива</h2>
+    <label for="arrayInput">Введите массив (через запятую):</label>
+    <input type="text" id="arrayInput" />
+    <p>Сумма элементов >0 и <10: <span id="sumArrayResult"></span></p>
+
+    <h2>Задание 7: Уникальные числа в массиве</h2>
+    <p>Уникальные числа: <span id="uniqueArrayResult"></span></p>
+
+    <h2>Задание 8: Подсчет гласных</h2>
+    <label for="vowelInput">Введите кириллическую строку:</label>
+    <input type="text" id="vowelInput" />
+    <p>Количество гласных: <span id="vowelCountResult"></span></p>
+
+    <h2>Задание 9: Сортировка массива</h2>
+    <p>Отсортированный массив: <span id="sortedArrayResult"></span></p>
+
+    <button onclick="displayResults()">Показать результаты</button>
+</body>
+</html>
