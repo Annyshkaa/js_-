@@ -1,0 +1,28 @@
+Задание 1
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проверка числа</title>
+   
+</head>
+<body>
+    <h1>Проверка числа</h1>
+    <label for="numberInput">Введите число:</label>
+    <input type="number" id="numberInput" />
+    <button onclick="checkNumber()">Проверить</button>
+    <p>Результат: <span id="result"></span></p>
+</body>
+<script>
+	function isGreaterThan18(number) {
+					return number > 18;
+	}
+
+	function checkNumber() {
+					const inputNumber = parseFloat(document.getElementById("numberInput").value);
+					const result = isGreaterThan18(inputNumber);
+					document.getElementById("result").innerText = result;
+	}
+</script>
+</html>
