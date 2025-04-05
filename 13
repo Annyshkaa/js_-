@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>13</title>
+</head>
+
+<body>
+	<form>
+		<input class="name" type="text" id="name" placeholder="Имя" required>
+		<input class="email" type="email" id="email" placeholder="Email" required>
+		<button type="submit">Отправить</button>
+	</form>
+	<script>
+		const input1 = document.querySelector('#input1'); 
+const input2 = document.querySelector('#input2'); 
+const button = document.querySelector('#submitButton'); 
+
+button.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    if (input1.value.trim() === '' || input2.value.trim() === '') {
+        alert('Ошибка валидации'); 
+    } else {
+        alert('Форма успешно отправлена!'); 
+    }
+});
+	</script>
+</body>
+
+</html>
